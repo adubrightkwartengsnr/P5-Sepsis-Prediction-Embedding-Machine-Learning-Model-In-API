@@ -1,0 +1,2 @@
+# P5-Sepsis-Prediction-Embedding-Machine-Learning-Model-In-API
+This project aims to develop and deploy a machine learning model for predicting sepsis. The model will be embedded in an API to facilitate easy integration with various healthcare applications. The project involves data preprocessing, feature engineering, model training, and API development, making it available for real-time sepsis prediction.
