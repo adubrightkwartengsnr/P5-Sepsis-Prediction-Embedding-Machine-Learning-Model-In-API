@@ -5,6 +5,9 @@ import joblib
 from feature_transformer import FeatureEngineeringTransformer
 import uvicorn
 
+
+
+
 # create an instance of FASTAPI
 app = FastAPI(
         title="Sepssis Prediction API",
@@ -20,11 +23,16 @@ app = FastAPI(
 # load model components
 def load_ml_components():
     with open("../models/sepsis_model_components.joblib","rb") as file:
-        model_components = joblib.load(file)
+        model_components = joblib.load(file) 
     return model_components
 
+# call the model components
 model_components = load_ml_components()
 
+# get api status
+@app.get("/")
+def get_status():
+    return {"status": "API is running"}
 
 
 # # Create SeppssisFeatures class from pydantic BaseModel
@@ -38,7 +46,6 @@ class SepssisFeatures(BaseModel):
     Blood_Work_Result_4: float
     Age: int
     Insurance: int
-
 
 # # Create Endpoint for the XGB Classifier Pipeline
 @app.post("/predict_sepsis/xgb_classifier")
@@ -60,6 +67,7 @@ async def predict_sepsis(data:SepssisFeatures):
                     {"Negative":round(prediction_proba[0],2),
                      "Positive":round(prediction_proba[1],2)}
                     }
+        
         return response
     except Exception as e:
         return {"error": str(e)}
@@ -85,6 +93,7 @@ async def predict_sepsis(data:SepssisFeatures):
                     {"Negative":round(prediction_proba[0],2),
                      "Positive":round(prediction_proba[1],2)}
                     }
+        
         return response
     except Exception as e:
         return {"error": str(e)}
