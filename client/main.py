@@ -7,10 +7,12 @@ st.set_page_config(
     layout="wide"
 )
 
-st.title("Sepssis Classifier 🤖")
+# set title of the application
+st.title("Sepssis Classifier Application 🤖")
+
 # load the api endpoints
 gradient_boost_endpoint = "http://127.0.0.1:8000/predict_sepsis/gradient_boost"
-xgb_classifier_endpoint = "http://127.0.0.1:8000/predict_sepsis/xgb_classifier"
+log_regression_endpoint = "http://127.0.0.1:8000/predict_sepsis/log_regression"
 
 
 
@@ -18,7 +20,7 @@ xgb_classifier_endpoint = "http://127.0.0.1:8000/predict_sepsis/xgb_classifier"
 # select between the two endpoints of the ml_model
 col1,col2 = st.columns(2)
 with col2:
-    st.selectbox("Model Selection",options=["XGB Classifier","Gradient Boost"],key="model_select")
+    st.selectbox("Model Selection",options=["Logistic Regression","Gradient Boost"],key="model_select")
 
 # initializa select model session state
 if "model_select" not in st.session_state:
@@ -33,7 +35,6 @@ for key in input_keys:
 
 # define function to accept inputs and display forms
 def display_forms():
-    st.subheader("Input Features")
     with st.form("input-features"):
         col1,col2 = st.columns(2)
         with col1:
@@ -41,22 +42,23 @@ def display_forms():
             st.number_input("Blood Work Result 1",min_value=0,step=1,key = "Blood_Work_Result_1")
             st.number_input("Blood Pressure",min_value=0,step=1,key = "Blood_Pressure")
             st.number_input("Blood Work Result 2",min_value=0,step=1,key = "Blood_Work_Result_2")
-            st.number_input("Blood Work Result 3",min_value=0,step=1,key = "Blood_Work_Result_3")
+           
         with col2:
+            st.number_input("Blood Work Result 3",min_value=0,step=1,key = "Blood_Work_Result_3")
             st.number_input("Body Mass Index",min_value=0.0,step=0.1,key = "Body_Mass_Index")
             st.number_input("Blood Work Result 4",min_value=0.0,step=0.1,key = "Blood_Work_Result_4")
-            st.number_input("Age",min_value=0,step=1,key = "Age")
-            st.number_input("Insurance",min_value=0,step=1,key = "Insurance")
-            submit_button = st.form_submit_button("Predict",use_container_width=True)
+            st.number_input("Age", min_value=0, step=1, key = "Age")
+            st.number_input("Insurance",min_value=0, max_value =1,step=1,key = "Insurance")
+        submit_button = st.form_submit_button("Predict")
     return submit_button
 
 
 # define function to make predictions
 def make_prediction():
     input_features = {key: st.session_state[key] for key in input_keys}
-    if st.session_state["model_select"] == "XGB Classifier":
+    if st.session_state["model_select"] == "Logistic Regression":
         # send api resopnse to the gradient boost api
-        xgb_response =requests.post(xgb_classifier_endpoint,json=input_features)
+        xgb_response =requests.post(log_regression_endpoint,json=input_features)
         if xgb_response.status_code == 200:
             prediction = xgb_response.json()["prediction"]
             probability = xgb_response.json()["prediction_probability"]
