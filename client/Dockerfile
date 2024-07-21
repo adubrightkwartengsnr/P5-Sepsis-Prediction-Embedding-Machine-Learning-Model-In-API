@@ -4,8 +4,8 @@ FROM python:3.12.4
 COPY requirements.txt /tmp/requirements.txt
 
 # Upgrade pip and install requirements.txt
-RUN python -m pip install --no--cache-dir --upgrade pip &&\
-    python -m pip install --no-cache-dir --upgrade --timeout 3000000 -r /tmp/requirements.txt
+RUN python -m pip install --no-cache-dir --upgrade pip &&\
+    python -m pip install  --no-cache-dir --timeout 3000000 -r /tmp/requirements.txt
 
 # Copy the entire roject
 COPY . /app
@@ -17,4 +17,4 @@ WORKDIR /app
 EXPOSE 80
 
 # Run the application
-CMD [ "streamlit", "run", "main.py", "--server.port", "80"]
+CMD [ "streamlit", "run", "main.py", "--server.port", "8501"]
