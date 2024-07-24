@@ -22,7 +22,7 @@ app = FastAPI(
 
 # load model components
 def load_ml_components():
-    with open("./models/sepsis_model_components.joblib","rb") as file:
+    with open("./models/model_components.joblib","rb") as file:
         model_components = joblib.load(file) 
     return model_components
 
@@ -48,20 +48,20 @@ class SepssisFeatures(BaseModel):
     Insurance: int
 
 # # Create Endpoint for the XGB Classifier Pipeline
-@app.post("/predict_sepsis/log_regression")
+@app.post("/predict_sepsis/xgb_classifier")
 async def predict_sepsis(data:SepssisFeatures):
     try:
         # create dataframe from sepssis data
         df = pd.DataFrame([data.model_dump()])
         # call the random_forest_pipeline and encoder from the ml model
-        log_regression_pipeline = model_components["log_regression"]
+        xgb_classifier_pipeline = model_components["xgb_classifier"]
         encoder = model_components["encoder"]
         # make prediction
-        prediction = log_regression_pipeline.predict(df)
+        prediction = xgb_classifier_pipeline.predict(df)
         prediction = int(prediction[0])
         decoded_prediction = encoder.inverse_transform([prediction])[0]
-        prediction_proba = log_regression_pipeline.predict_proba(df)[0].tolist()
-        response = {"model_used":"Logistic Regression",
+        prediction_proba = xgb_classifier_pipeline.predict_proba(df)[0].tolist()
+        response = {"model_used":"XGB Classifier",
                     "prediction": decoded_prediction,
                     "prediction_probability":
                     {"Negative":round(prediction_proba[0],2),

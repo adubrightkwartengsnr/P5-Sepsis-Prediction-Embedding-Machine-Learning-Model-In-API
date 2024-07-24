@@ -10,23 +10,23 @@ st.set_page_config(
 # set title of the application
 st.title("Sepssis Classifier Application 🤖")
 
-# # load the api endpoints
+# # load the api endpoints from FastAPI
 # gradient_boost_endpoint = "http://127.0.0.1:8000/predict_sepsis/gradient_boost"
-# log_regression_endpoint = "http://127.0.0.1:8000/predict_sepsis/log_regression"
+# xgb_classifier_endpoint = "http://127.0.0.1:8000/predict_sepsis/xgb_classifier"
 
 # endpoints from Docker
 gradient_boost_endpoint = "http://api:8000/predict_sepsis/gradient_boost"
-log_regression_endpoint = "http://api:8000/predict_sepsis/log_regression"
+random_forest_endpoint = "http://api:8000/predict_sepsis/xgb_classifier"
 
 
 # select between the two endpoints of the ml_model
 col1,col2 = st.columns(2)
 with col2:
-    st.selectbox("Model Selection",options=["Logistic Regression","Gradient Boost"],key="model_select")
+    st.selectbox("Model Selection",options=["XGB Classifier","Gradient Boost"],key="model_select")
 
 # initializa select model session state
 if "model_select" not in st.session_state:
-    st.session_state["model_select"] = "Logistic Regression"
+    st.session_state["model_select"] = "XGB Classifier"
 
 # Initialize session state for input features
 input_keys = ["Plasma_Glucose", "Blood_Work_Result_1", "Blood_Pressure", "Blood_Work_Result_2",
@@ -60,17 +60,17 @@ def display_forms():
 # define function to make predictions
 def make_prediction():
     input_features = {key: st.session_state[key] for key in input_keys}
-    if st.session_state["model_select"] == "Logistic Regression":
+    if st.session_state["model_select"] == "XGB Classifier":
         # send api resopnse to the gradient boost api
-        log_regression_response =requests.post(log_regression_endpoint,json=input_features)
-        if log_regression_response.status_code == 200:
-            print(log_regression_response.status_code)
-            prediction = log_regression_response.json()["prediction"]
-            probability = log_regression_response.json()["prediction_probability"]
+        xgb_classifier_response =requests.post(xgb_classifier_endpoint,json=input_features)
+        if xgb_classifier_response.status_code == 200:
+            print(xgb_classifier_response.status_code)
+            prediction = xgb_classifier_response.json()["prediction"]
+            probability = xgb_classifier_response.json()["prediction_probability"]
             st.divider()
             st.success(f"The Sepssis prediction is: {prediction}, with the following prediction probabilities {probability}")
         else:
-            st.error(f"Error: {  log_regression_response.json()["error"]}")
+            st.error(f"Error: {xgb_classifier_response.json()["error"]}")
     else:
         gradient_boost_response =requests.post(gradient_boost_endpoint,json=input_features)
         print(gradient_boost_response.status_code)
