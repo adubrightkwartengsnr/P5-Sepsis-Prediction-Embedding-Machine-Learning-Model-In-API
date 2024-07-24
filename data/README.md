@@ -23,7 +23,7 @@ The dataset can only be used for the purpose of this assignment. Sharing or dist
 | PR              | Attribute 3      | Blood Pressure (mm Hg)|
 | SK              | Attribute 4      | Blood Work Result-2 (mm)|
 | TS             | Attribute 5      |     Blood Work Result-3 (mu U/ml)|                                                                                  
-| M11     | Attribute 6    |  Body mass index (weight in kg/(height in m)^2|
+| M11     | Attribute 6    |  Body mass index (weight in kg/(height in m)^2)|
 | BD2             | Attribute 7     |   Blood Work Result-4 (mu U/ml)|
 | Age              | Attribute 8      |    patients age  (years)|
 | Insurance | N/A     | If a patient holds a valid insurance card|
