@@ -1,4 +1,3 @@
-![Getting Started](Utils/Dashboard.jpeg)
 <a name="readme-top"></a>
 
 <div align="center">
@@ -190,7 +189,10 @@ In order to run this project, you need:
    docker pull brightadu/sepsis-predict-client:v1.0
    ```
 
-
+  ``` sh
+   docker run -d --name mycontainer -p 8000:8000 brightadu/sepsis-predict-api:v1.0
+   docker run -d --name mycontainer -p 8000:8000 brightadu/sepsis-predict-client:v1.0
+   ```
 
 
 <!-- AUTHORS -->
