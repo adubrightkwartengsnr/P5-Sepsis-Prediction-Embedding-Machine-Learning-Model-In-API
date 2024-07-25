@@ -26,7 +26,7 @@
 
 # Sepsis Prediction <a name="about-project"></a>
 
-**#P5-Sepsis-Prediction: Buiding classification model to predict Sepsis** Sepsis, a life-threatening condition, is a leading cause of mortality in intensive care units. Sepsis is a life-threatening condition caused by the body's response to infection, and early detection is critical for patient survival. By embedding the predictive model in an API, we aim to provide healthcare providers with a powerful tool for real-time sepsis prediction, enhancing decision-making and patient outcomes. While lack of insurance and age differences has been associated with higher in-hospital mortality due to sepsis, the reasons behind this disparity remain unclear. Insurance can facilitate timely access to care, potentially impacting sepsis outcomes and age is a factor that is likely to determine sepsis-related hospitalization.
+**P5-Sepsis-Prediction: Buiding classification model to predict Sepsis** Sepsis, a life-threatening condition, is a leading cause of mortality in intensive care units. Sepsis is a life-threatening condition caused by the body's response to infection, and early detection is critical for patient survival. By embedding the predictive model in an API, we aim to provide healthcare providers with a powerful tool for real-time sepsis prediction, enhancing decision-making and patient outcomes. While lack of insurance and age differences has been associated with higher in-hospital mortality due to sepsis, the reasons behind this disparity remain unclear. Insurance can facilitate timely access to care, potentially impacting sepsis outcomes and age is a factor that is likely to determine sepsis-related hospitalization.
 
 
 
@@ -44,17 +44,26 @@
 
 
 ## 🛠 Built With <a name="Technologies Used"></a>
-The Telco Churn Classification Project was done following the CRISP-DM process. It also involved a variety of technologies, programming languages, and libraries to process, analyze, and visualize the data. The following tools were utilized:
-4. _Python_: Python programming language was the backbone of the project, used for data processing, analysis, and visualization tasks.
-5. _Pandas_ and NumPy: Pandas and NumPy libraries were essential for data manipulation and numerical computations.
-6. _Matplotlib and Seaborn_: Matplotlib and Seaborn were employed for data visualization, creating insightful charts and graphs to represent the findings.
-7. _Visual Studio Code and Jupyter Notebooks_: Jupyter Notebooks within the Visual Studio IDE provided an interactive environment for running code, visualizing data, and documenting the analysis process.
-8. _Scikit-learn_: Scikit-learn's library SimpleImputer was utilized for imputing null values in the amount column.
-9. _Streamlit_: Streamlit is an open-source Python framework for data scientists and AI/ML engineers to deliver interactive data apps – in only a few lines of code.
-10. _FastAPI_: is a web framework first released in 2018 for building HTTP-based service APIs in Python. It is used for building APIs with Python 3.8+ based on standard Python-type hints. FastAPI is based on Pydantic and uses type hints to validate, serialize and deserialize data.
-11. _Docker_: Docker is a set of platform as a service products that use OS-level virtualization to deliver software in packages called containers. The service has both free and premium tiers. The software that hosts the containers is called Docker Engine.
-12. _Optuna_: Optuna is an automatic hyperparameter optimization software framework, particularly designed for machine learning.
-12. _GitHub_: GitHub served as the version control system for the project, enabling collaboration and tracking changes in the codebase.
+The P5-Sepsis-Prediction Project was done following the CRISP-DM process. It also involved a variety of technologies, programming languages, and libraries to process, analyze, and visualize the data. The following tools were utilized:
+1. _Python_: Python programming language was the backbone of the project, used for data processing, analysis, and visualization tasks.
+
+2. _Pandas_ and NumPy: Pandas and NumPy libraries were essential for data manipulation and numerical computations.
+
+3. _Matplotlib and Seaborn_: Matplotlib and Seaborn were employed for data visualization, creating insightful charts and graphs to represent the findings.
+
+4. _Visual Studio Code and Jupyter Notebooks_: Jupyter Notebooks within the Visual Studio IDE provided an interactive environment for running code, visualizing data, and documenting the analysis process.
+
+5. _Scikit-learn_: Scikit-learn's library SimpleImputer was utilized for imputing null values in the amount column.
+
+6. _Streamlit_: Streamlit is an open-source Python framework for data scientists and AI/ML engineers to deliver interactive data apps – in only a few lines of code.
+
+7. _FastAPI_: is a web framework first released in 2018 for building HTTP-based service APIs in Python. It is used for building APIs with Python 3.8+ based on standard Python-type hints. FastAPI is based on Pydantic and uses type hints to validate, serialize and deserialize data.
+
+8. _Docker_: Docker is a set of platform as a service products that use OS-level virtualization to deliver software in packages called containers. The service has both free and premium tiers. The software that hosts the containers is called Docker Engine.
+
+9. _Optuna_: Optuna is an automatic hyperparameter optimization software framework, particularly designed for machine learning.
+
+10. _GitHub_: GitHub served as the version control system for the project, enabling collaboration and tracking changes in the codebase.
     These technologies played a crucial role in the successful implementation of the project, providing the necessary tools to analyze and derive insights from the Indian Startup Ecosystem funding datasets.
 
 <details>
@@ -104,10 +113,6 @@ This breakdown highlights a notable trend: regardless of insurance status, a lar
 
  
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-![image](Utils\Dashboard.jpeg)
-
-
 
 
 <!-- GETTING STARTED -->
