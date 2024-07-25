@@ -83,13 +83,27 @@ Area Under the Receiver Operating Characteristic Curve (AUC-ROC): According to t
 
 ## Key Insights <a name="key-Insights"></a>
 The distilled recommendations are as follows:
-1. Tailor Pricing Strategies: The analysis reveals a correlation between higher monthly charges and increased customer churn. To bolster retention, Vodafone could explore tailored pricing strategies that balance revenue generation with customer satisfaction and perceived value.
-2. Enhance Early Customer Experience: Elevated churn rates during the initial months emphasize the importance of prioritizing early customer experience. By focusing on seamless onboarding processes, service quality, and swift issue resolution, Vodafone can enhance satisfaction and foster loyalty during this critical phase.
-3. Promote Long-Term Contracts: Higher churn rates among customers on month-to-month contracts call for attention. Encouraging the adoption of longer-term contracts through incentives and benefits could cultivate commitment and diminish churn.
-4. Leverage Additional Services: Services like Online Security and Backup have a notable impact on churn rates. Strengthening these offerings to address customer needs can aid in retention by delivering value-added solutions.
-5. Monitor Fiber Optic Offering: Given its high charges and churn rate, meticulous attention to the Fiber Optic service is crucial. Continuously refining and supporting this service will ensure that premium costs align with customer expectations.
-6. Personalized Customer Engagement: Utilize insights from churn analysis to craft personalized engagement strategies. Tailored communication, targeted offers, and customized marketing campaigns based on factors such as tenure, contract type, and preferences can enhance loyalty and mitigate churn.
+1. The datasets should be increased further to enable the machine learning models to learn from the data
+2. _Analysis of Age Distribution and Sepsis Risk_
+    - The average age of all patients in the dataset is approximately 33.29 years.
+    - For patients diagnosed with sepsis, the median age is around 34 years.
+    - In contrast, patients without sepsis have a median age of about 25 years.
+  From these observations, we can infer that older patients are more likely to develop sepsis compared to younger patients. The higher median age for those with sepsis suggests that as age increases, so does the risk of contracting sepsis. This insight highlights the importance of considering age as a significant factor in the risk assessment for sepsis.
+3. _Analysis of BMI and Sepsis Risk_:From the my analysis, we can observe that the risk of developing sepsis varies across different BMI categories. Patients categorized as Overweight and Obese have a higher likelihood of developing sepsis compared to those who fall into the Underweight and Normal BMI categories. This insight highlights the importance of considering BMI as a risk factor in the risk assessment for sepsis, as well as the fact that patients with high BMI levels are more likely to develop sepsis. Additionally, the distribution of patients across different BMI categories is not uniform, which may affect the overall accuracy of our risk assessment.
 
+4. _Analysis of Blood Pressure and Sepsis Risk_: From the visualization above, it is evident that all patients in the sepsis dataset fall between the normal pressure levels. This suggests that higher blood pressure is not a major factor in determining the risk of developing sepsis.
+Recommendations for Detecting Sepsis: Comprehensive Health Monitoring: Since blood pressure alone is not a significant indicator of sepsis risk, it is crucial to monitor a combination of vital signs and biomarkers, including heart rate, temperature, respiratory rate, and blood tests.
+
+5. _Analysis of Plasma Glucose Levels and Sepsis Risk_: From the exploratory data analysis, it is evident that the median plasma glucose levels of patients with sepsis are higher compared to those without sepsis. Specifically:
+- The median plasma glucose level for patients with sepsis is approximately 3.5 mmol/L.
+- For patients without sepsis, the median plasma glucose level is around 1.5 mmol/L.
+This significant difference indicates that elevated plasma glucose levels are associated with a higher risk of developing sepsis. Given the observed correlation, plasma glucose levels should be included as a key feature in the model.
+
+6._Analysis of Insurance Coverage and Sepsis Risk_:In this analysis, '0' signifies patients without health insurance coverage, and '1' represents patients with insurance coverage.Among the patients without insurance (0), 57 have sepsis, while a larger group, consisting of 131 patients, does not have sepsis. Conversely, among the patients with insurance coverage (1), 151 have sepsis, whereas a higher number of 260 patients are sepsis-free.
+This breakdown highlights a notable trend: regardless of insurance status, a larger proportion of patients are tagged as sepsis-negative. This indicates that while insurance coverage is an important factor in healthcare, it does not significantly alter the proportion of sepsis diagnoses in this dataset.
+
+
+ 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ![image](Utils\Dashboard.jpeg)
@@ -118,13 +132,13 @@ Clone this repository to your desired folder:
 
 ```sh
   cd my-folder
-  git clone https://github.com/adubrightkwartengsnr/LP2-Customer-Churn-Prediction
+  git clone https://github.com/adubrightkwartengsnr/P5-Sepsis-Prediction-Embedding-Machine-Learning-Model-In-API
 ```
 
 Change into the cloned repository
 
 ```sh
-  cd Indian_Startup_Ecosystem_Analysis_2018-2021
+  cd P5-Sepsis-Prediction-Embedding-Machine-Learning-Model-In-API
   
 ```
 
@@ -151,12 +165,39 @@ Here, you need to recursively install the packages in the `requirements.txt` fil
    pip install -r requirements.txt
 ```
 
+## Running The Docker Images from Dockerhub
+
+To run the Docker images on your local machine, follow these steps.
+
+### Prerequisites
+
+In order to run this project, you need:
+
+- Python installed on your machine
+
+### Steps
+
+1. **Install Docker**
+
+   If you haven't already installed Docker, you can download and install it from the [official Docker website](https://www.docker.com/get-started). Follow the installation instructions specific to your operating system.
+
+2. **Pull the Docker Images**
+
+   Open your terminal or command prompt and pull the required Docker images from Dockerhub using the following commands:
+
+   ``` sh
+   docker pull brightadu/sepsis-predict-api:v1.0
+   docker pull brightadu/sepsis-predict-client:v1.0
+   ```
+
+
+
 
 <!-- AUTHORS -->
 
 ## 👥 Authors <a name="authors"></a>
 
-🕵🏽‍♀️ **Bright Adu Kwarteng Snr**
+🕵🏽‍♀️ **Bright Kwarteng Senior Adu**
 
 - GitHub: [GitHub Profile](https://github.com/adubrightkwartengsnr)
 - LinkedIn: [LinkedIn Profile](www.linkedin.com/in/bright-adu-kwarteng-snr)
@@ -190,7 +231,7 @@ If you like this project kindly show some love, give it a 🌟 **STAR** 🌟
 
 ## 🙏 Acknowledgments <a name="acknowledgements"></a>
 
-I would like to express my sincere gratitude to my instructors Racheal Appiah-Kubi and Violette Naa Adoley Allotey for their exceptional guidance, unwavering support, and invaluable mentorship throughout the course of this project. Their expertise, dedication, and commitment to our learning journey have been instrumental in shaping our understanding and skills in data analysis.
+I would like to express my sincere gratitude to my instructors Racheal Appiah-Kubi and Glen Anum for their exceptional guidance, unwavering support, and invaluable mentorship throughout the course of this project. Their expertise, dedication, and commitment to our learning journey have been instrumental in shaping our understanding and skills in data analysis.
 
 I would also like to extend a special thank you to Solomon Nyamson for his valuable advice and insights shared during the development of this project. His experiences and expertise in similar projects have been a source of inspiration and guidance, enriching our project with practical knowledge.
 
@@ -205,7 +246,7 @@ This project is [MIT](./LICENSE) licensed.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<p> align="right">(<a href="https://medium.com/@adubrightkwarrteng11/customer-churn-prediction-a-machine-learning-learning-approach-d75d3ef90391">Link to Article</a>)</p>
+<p> align="right">(<a href="https://medium.com/@adubrightkwarrteng11/sepsis-prediction-with-fastapi-streamlit-and-docker-a-complete-guide-3ba952d5fd32">Link to Article</a>)</p>
 
 
 
